@@ -1,5 +1,10 @@
-# Recipe Application in Vanilla ES6
+# Recipe Application in Modern JS
 
-## Info
+## Information
 
-- Uses Forklify APIs
+- Uses modern JS technologies
+  - ES6
+  - npm (package manager)
+    - Webpack (for module bundling)
+      - ES6 Modules
+    - Babel (transpiler)
