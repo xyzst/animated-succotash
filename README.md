@@ -7,4 +7,4 @@
   - npm (package manager)
     - Webpack (for module bundling)
       - ES6 Modules
-    - Babel (transpiler)
+    - Babel (JS transpiler)
