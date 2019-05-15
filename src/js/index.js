@@ -1,8 +1,15 @@
 // Global app controller
-import string from "./models/Search";
-// import { add as a, multiply as m, ID } from "./views/searchView";
-import * as searchView from "./views/searchView";
-
-console.log(string);
-console.log(searchView.add(1, 1));
-console.log(searchView.multiply(searchView.ID, 5));
+import axios from "axios";
+async function getResults(query) {
+  const key = "";
+  try {
+    const res = await axios(
+      `https://www.food2fork.com/api/search?key=${key}&q=${query}"`
+    );
+    const recipes = res.data.recipes;
+    console.log(recipes);
+  } catch (error) {
+    alert(error);
+  }
+}
+getResults("pizza");
