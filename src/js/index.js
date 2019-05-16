@@ -34,5 +34,3 @@ elements.searchForm.addEventListener("submit", e => {
   e.preventDefault(); // prevent page refresh on form submit
   controlSearch();
 });
-
-const search = new Search("pizza");
