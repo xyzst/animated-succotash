@@ -39,7 +39,7 @@ const renderRecipe = recipe => {
 };
 
 /**
- * Shortens strings given in the title parameter by the defined limit parameter (default is 17)
+ * Helper method which shortens strings given in the title parameter by the defined limit parameter (default is 17)
  *
  * Example
  *  Given:
