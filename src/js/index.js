@@ -32,7 +32,19 @@ const controlSearch = async () => {
     clearLoader();
   }
 };
+
 elements.searchForm.addEventListener("submit", e => {
   e.preventDefault(); // prevent page refresh on form submit
   controlSearch();
+});
+
+// Use of event delegation ...
+elements.searchResultPages.addEventListener("click", e => {
+  const button = e.target.closest(".btn-inline");
+  if (button) {
+    const goToPage = parseInt(button.dataset.goto, 10);
+    searchView.clearResults();
+    searchView.renderResults(state.search.result, goToPage);
+    console.log(goToPage);
+  }
 });
