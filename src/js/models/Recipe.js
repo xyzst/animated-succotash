@@ -87,6 +87,7 @@ export default class Recipe {
       "cup",
       "pound"
     ];
+    const units = [...unitsShort, "kg", "g"];
     const newIngredients = this.ingredients.map(x => {
       // Uniform units
       let ingredient = x.toLowerCase();
@@ -97,7 +98,7 @@ export default class Recipe {
       ingredient = ingredient.replace("/[{()}]/g", " ");
       // Parse ingredients into count, unit and ingredient
       const arrIng = ingredient.split(" ");
-      const unitIndex = arrIng.findIndex(y => unitsShort.includes(y));
+      const unitIndex = arrIng.findIndex(y => units.includes(y));
       let objIng;
       if (unitIndex > -1) {
         // unit found
@@ -112,7 +113,7 @@ export default class Recipe {
         objIng = {
           count,
           unit: arrIng[unitIndex],
-          ingredient: arrIng.slice(unitIndex + 1).join(" ");
+          ingredient: arrIng.slice(unitIndex + 1).join(" ")
         };
       } else if (parseInt(arrIng[0], 10)) {
         // Leverages type coercion here -- If the first element is found not to be a number, will return NaN and thus evaluate to falsy
