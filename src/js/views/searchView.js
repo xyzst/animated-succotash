@@ -19,6 +19,15 @@ export const clearResults = () => {
   elements.searchResultPages.innerHTML = "";
 };
 
+export const highlightSelected = id => {
+  const resultsArray = Array.from(document.querySelectorAll(".result__link"));
+  resultsArray.forEach(x => x.classList.remove("result__link--active"));
+
+  document
+    .querySelector(`a[href="#${id}"]`)
+    .classList.add("result__link--active");
+};
+
 /**
  * f2f_url: "http://food2fork.com/view/8061c3"
  * image_url: "http://static.food2fork.com/CheesecakeJars2Crop1of1eedb.jpg"
