@@ -36,11 +36,9 @@ export default class Recipe {
    */
   async getRecipe() {
     try {
-      console.log(this.id, key);
       const result = await axios(
         `https://www.food2fork.com/api/get?key=${key}&rId=${this.id}`
       );
-      console.log(result);
       this.title = result.data.recipe.title;
       this.author = result.data.recipe.publisher;
       this.image = result.data.recipe.image_url;
