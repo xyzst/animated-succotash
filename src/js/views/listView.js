@@ -1,4 +1,4 @@
-import { elenments } from "./base";
+import { elements } from "./base";
 
 export const renderItem = item => {
   const markup = `
