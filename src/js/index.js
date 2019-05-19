@@ -33,8 +33,8 @@ const controlSearch = async () => {
       await state.search.getResults();
 
       // 5. Render results on UI
-      searchView.renderResults(state.search.result);
       clearLoader();
+      searchView.renderResults(state.search.result);
     } catch (error) {
       alert("Oh noes, the search has failed!");
       clearLoader();
@@ -62,7 +62,7 @@ elements.searchResultPages.addEventListener("click", e => {
  */
 const controlRecipe = async () => {
   // Fetch hash id from url
-  const id = parseInt(window.location.hash.replace("#", ""));
+  const id = window.location.hash.replace("#", "");
   if (id) {
     // prepare ui
     recipeView.clearRecipe();
@@ -83,6 +83,7 @@ const controlRecipe = async () => {
       clearLoader();
       recipeView.renderRecipe(state.recipe);
     } catch (error) {
+      console.log(error);
       alert("Error processing recipe!");
     }
 
@@ -94,6 +95,4 @@ const controlRecipe = async () => {
 // window.addEventListener("load", controlRecipe);
 
 // Way to add event listeners to multiple events without repeating self
-[("hashchange", "load")].forEach(e =>
-  window.addEventListener(e, controlRecipe)
-);
+["hashchange", "load"].forEach(e => window.addEventListener(e, controlRecipe));

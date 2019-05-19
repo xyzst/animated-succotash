@@ -92,10 +92,12 @@ export default class Recipe {
       // Uniform units
       let ingredient = x.toLowerCase();
       unitsLong.forEach((unit, i) => {
-        ingredient = ingredient.replace(unit, unitShort[i]);
+        ingredient = ingredient.replace(unit, unitsShort[i]);
       });
+
       // Remove parentheses
-      ingredient = ingredient.replace("/[{()}]/g", " ");
+      ingredient = ingredient.replace(/ *\([^)]*\) */g, " ");
+
       // Parse ingredients into count, unit and ingredient
       const arrIng = ingredient.split(" ");
       const unitIndex = arrIng.findIndex(y => units.includes(y));
@@ -107,6 +109,7 @@ export default class Recipe {
         if (arrCount.length === 1) {
           count = eval(arrIng[0].replace("-", "+"));
         } else {
+          console.log(unitIndex, arrIng);
           count = eval(arrIng.slice(0, unitIndex).join("+"));
         }
 

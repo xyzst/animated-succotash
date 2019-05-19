@@ -21,11 +21,11 @@ export const clearResults = () => {
 
 export const highlightSelected = id => {
   const resultsArray = Array.from(document.querySelectorAll(".result__link"));
-  resultsArray.forEach(x => x.classList.remove("result__link--active"));
+  resultsArray.forEach(x => x.classList.remove("results__link--active"));
 
   document
-    .querySelector(`a[href="#${id}"]`)
-    .classList.add("result__link--active");
+    .querySelector(`.results__link[href*="${id}"]`)
+    .classList.add("results__link--active");
 };
 
 /**

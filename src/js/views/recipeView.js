@@ -4,12 +4,12 @@ import { Fraction } from "fractional";
 export const clearRecipe = () => {
   elements.recipe.innerHTML = "";
 };
-export const createIngredient = ingredient => `
+const createIngredient = ingredient => `
 <li class="recipe__item">
     <svg class="recipe__icon">
         <use href="img/icons.svg#icon-check"></use>
     </svg>
-    <div class="recipe__count">${this.formatCount(ingredient.count)}</div>
+    <div class="recipe__count">${formatCount(ingredient.count)}</div>
     <div class="recipe__ingredient">
         <span class="recipe__unit">${ingredient.unit}</span>
         ${ingredient.ingredient}
@@ -70,7 +70,7 @@ export const renderRecipe = recipe => {
 <div class="recipe__ingredients">
     <ul class="recipe__ingredient-list">
 
-    ${recipe.ingredients.map(x => createIngredient).join("")}
+    ${recipe.ingredients.map(x => createIngredient(x)).join("")}
 
     </ul>
 
@@ -107,18 +107,19 @@ const formatCount = count => {
   if (count) {
     // count = 2.5 ->> 2 1/2
     // count = 0.5 ->> 1/2
-    const [int, dec] = count
+    const newCount = Math.round(count * 10000) / 10000;
+    const [int, dec] = newCount
       .toString()
       .split(".")
       .map(x => parseInt(x, 10));
 
-    if (!dec) return count;
+    if (!dec) return newCount;
 
     if (int === 0) {
-      const fr = new Fraction(count);
+      const fr = new Fraction(newCount);
       return `${fr.numerator}/${fr.denominator}`;
     } else {
-      const fr = new Fraction(count - int);
+      const fr = new Fraction(newCount - int);
       return `${int} ${fr.numerator}/${fr.denominator}`;
     }
   }
