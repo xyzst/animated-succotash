@@ -35,7 +35,7 @@ const controlSearch = async () => {
       searchView.renderResults(state.search.result);
       clearLoader();
     } catch (error) {
-      alert("Oh noes, the fail has searched!");
+      alert("Oh noes, the search has failed!");
       clearLoader();
     }
   }
@@ -67,11 +67,10 @@ const controlRecipe = async () => {
 
     // create new recipe object
     state.recipe = new Recipe(id);
-
-    // get recipe data
+    // get recipe data  & parse ingredients
     try {
       await state.recipe.getRecipe();
-
+      state.recipe.parseIngredients();
       // calculate servers and time
       state.recipe.calcTime();
       state.recipe.calcServings();
