@@ -96,3 +96,20 @@ const controlRecipe = async () => {
 
 // Way to add event listeners to multiple events without repeating self
 ["hashchange", "load"].forEach(e => window.addEventListener(e, controlRecipe));
+
+// handling recipe button clicks
+elements.recipe.addEventListener[
+  ("click",
+  e => {
+    if (
+      e.target.matches(".btn-decrease, btn-decrease *") &&
+      state.recipe.servings > 1
+    ) {
+      state.recipe.updateServings("dec");
+      recipeView.updateServingsIngredients(state.recipe);
+    } else if (e.target.matches(".btn-increase, btn-increase *")) {
+      state.recipe.updateServings("inc");
+      recipeView.updateServingsIngredients(state.recipe);
+    }
+  })
+];
