@@ -4,6 +4,7 @@ import Recipe from "./models/Recipe";
 import List from "./models/List";
 import * as searchView from "./views/searchView";
 import * as recipeView from "./views/recipeView";
+import * as listView from "./views/listView";
 import { elements, renderLoader, clearLoader } from "./views/base";
 /**
  * Global state of app
@@ -98,6 +99,20 @@ const controlRecipe = async () => {
 // Way to add event listeners to multiple events without repeating self
 ["hashchange", "load"].forEach(e => window.addEventListener(e, controlRecipe));
 
+/**
+ * Shopping List Controller
+ */
+const controlList = () => {
+  // create a new list of there is none yet
+  if (!state.list) state.list = new List();
+
+  // Add each ingredient to the list
+  state.recipe.ingredients.forEach(el => {
+    const item = state.list.addItem(el.count, el.unit, el.ingredient);
+    listView.addItem(item);
+  });
+};
+
 // handling recipe button clicks
 elements.recipe.addEventListener[
   ("click",
@@ -111,6 +126,8 @@ elements.recipe.addEventListener[
     } else if (e.target.matches(".btn-increase, btn-increase *")) {
       state.recipe.updateServings("inc");
       recipeView.updateServingsIngredients(state.recipe);
+    } else if (e.target.matches(".recipe__btn--add .recipe__btn--add *")) {
+      controlList();
     }
   })
 ];
