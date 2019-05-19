@@ -146,6 +146,8 @@ const controlLike = () => {
     states.likes.removeLike(currentId);
     likesView.toggleLikesBtn(false);
   }
+
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
 
 // handling recipe button clicks
