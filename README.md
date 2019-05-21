@@ -19,3 +19,15 @@ After step 4 completes, your default browser should open and load http://localho
     - Webpack (for module bundling)
       - ES6 Modules
     - Babel (JS transpiler)
+
+## Wishlist
+
+    1. Implement button to delete all shopping list items
+    2. Implement functionality to manually add items to shopping list
+    3. Save shopping list data to local storage
+    4. Improve ingredient parsing algorithm
+    5. Algorithm to calculate amount of servings
+    6. Improve error handling
+    7. Leverage react.js to remove and abstract the hardcoded HTML values (also to practice react.js)
+    8. Replace localStorage with node.js backend
+    9. Add user login functionality
