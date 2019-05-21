@@ -87,7 +87,6 @@ const controlRecipe = async () => {
       state.recipe.calcServings();
 
       clearLoader();
-      console.log(state);
       recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (error) {
       console.log(error);
@@ -137,7 +136,6 @@ const controlList = () => {
 const controlLike = () => {
   if (!state.likes) state.likes = new Likes();
   const currentId = state.recipe.id;
-  console.log(state.likes);
   if (!state.likes.isLiked(currentId)) {
     const newLike = state.likes.addLike(
       currentId,
@@ -178,6 +176,5 @@ window.addEventListener("load", () => {
   state.likes = new Likes();
   state.likes.readStorage();
   likesView.toggleLikeMenu(state.likes.getNumLikes());
-  console.log(state);
   state.likes.likes.forEach(like => likesView.renderLike(like));
 });
