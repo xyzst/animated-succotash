@@ -176,4 +176,8 @@ elements.recipe.addEventListener("click", e => {
 
 window.addEventListener("load", () => {
   state.likes = new Likes();
+  state.likes.readStorage();
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
+  console.log(state);
+  state.likes.likes.forEach(like => likesView.renderLike(like));
 });
