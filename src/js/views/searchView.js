@@ -75,7 +75,7 @@ const renderRecipe = recipe => {
  * @param {string} title
  * @param {number} limit
  */
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
   const newTitle = [];
   if (title.length > limit) {
     let words = title.split(" ");
